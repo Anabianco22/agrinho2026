@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+import time
+
+def exibir_cabecalho():
+    print("=" * 70)
+    print("         PROGRAMA AGRINHO - PARANÁ 2026")
+    print("  'Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente'")
+    print("=" * 70)
+    print("Bem-vindo ao Simulador de Agro-Equilíbrio!")
+    print("Sua missão é gerenciar uma fazenda mantendo a alta produção e protegendo a natureza.\n")
+
+def fazer_pergunta(pergunta, opcoes):
+    print("-" * 50)
+    print(pergunta)
+    for chave, valor in opcoes.items():
+        print(f"[{chave}] - {valor[0]}")
+    
+    while True:
+        escolha = input("\nEscolha sua ação (A, B ou C): ").upper()
+        if escolha in opcoes:
+            return opcoes[escolha][1], opcoes[escolha][2]
+        print("Opção inválida! Escolha A, B ou C.")
+
+def simular_fazenda():
+    exibir_cabecalho()
+    time.sleep(1)
+    
+    # Pontuações iniciais (Produção e Sustentabilidade)
+    producao = 50
+    sustentabilidade = 50
+
+    # Cenário 1: Manejo da Água
+    p1 = "Cenário 1: Como será a irrigação da sua lavoura?"
+    opcoes_1 = {
+        'A': ('Irrigação por inundação (gasta mais água, estrutura barata).', +15, -20),
+        'B': ('Irrigação por gotejamento automatizado (alta eficiência e economia).', +10, +15),
+        'C': ('Depender apenas da chuva (sem custo, mas risco de perda).', -10, +5)
+    }
+    prod_mod, sust_mod = fazer_pergunta(p1, opcoes_1)
+    producao += prod_mod
+    sustentabilidade += sust_mod
+
+    # Cenário 2: Controle de Pragas
+    p2 = "\nCenário 2: O ataque de lagartas começou. O que você faz?"
+    opcoes_2 = {
+        'A': ('Aplicar defensivos químicos pesados na área total imediatamente.', +20, -25),
+        'B': ('Utilizar Manejo Integrado de Pragas (MIP) e controle biológico.', +15, +20),
+        'C': ('Não aplicar nada e deixar a natureza agir por conta própria.', -25, +10)
+    }
+    prod_mod, sust_mod = fazer_pergunta(p2, opcoes_2)
+    producao += prod_mod
+    sustentabilidade += sust_mod
+
+    # Cenário 3: Conservação do Solo
+    p3 = "\nCenário 3: Preparação do solo para a próxima safra. Qual a estratégia?"
+    opcoes_3 = {
+        'A': ('Arar a terra profundamente e queimar os restos da colheita anterior.', +5, -20),
+        'B': ('Plantio Direto na palhada, rotação de culturas e curvas de nível.', +20, +25),
+        'C': ('Deixar a terra em pousio sem nenhuma cobertura vegetal.', -15, -5)
+    }
+    prod_mod, sust_mod = fazer_pergunta(p3, opcoes_3)
+    producao += prod_mod
+    sustentabilidade += sust_mod
+
+    # Resultados Finais
+    print("\n" + "=" * 70)
+    print("                      RESULTADO DO SEU MANEJO")
+    print("=" * 70)
+    print(f"Pontuação de Produção Agrícola: {producao} pontos")
+    print(f"Pontuação de Sustentabilidade:  {sustentabilidade} pontos")
+    print("-" * 70)
+
+    # Lógica de Avaliação baseada no tema do Agrinho
+    if producao >= 70 and sustentabilidade >= 70:
+        print("🏆 PARABÉNS! Você alcançou o AGRO FORTE E FUTURO SUSTENTÁVEL!")
+        print("Sua fazenda produz muito bem e o meio ambiente está perfeitamente protegido.")
+    elif producao >= 70 and sustentabilidade < 50:
+        print("⚠️ ALERTA: Agro Forte, mas Futuro Ameaçado!")
+        print("Sua produção é alta, mas a degradação ambiental vai destruir seu solo no futuro.")
+    elif producao < 50 and sustentabilidade >= 70:
+        print("🍃 ALERTA: Natureza Intacta, mas Agro Fraco!")
+        print("O meio ambiente agradece, mas a produção foi baixa e a fazenda não se sustenta financeiramente.")
+    else:
+        print("❌ Crise Geral: Falta de planejamento.")
+        print("A fazenda não conseguiu produzir e a natureza também sofreu danos.")
+    print("=" * 70)
+
+if __name__ == "__main__":
+    simular_fazenda()
+
+
+</body>
+</html>
