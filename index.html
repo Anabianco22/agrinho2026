@@ -6,115 +6,245 @@
     <title>Document</title>
 </head>
 <body>
-    
-import time
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Agrinho 2026 | Paraná</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-def exibir_cabecalho():
-    print("=" * 75)
-    print("         PROGRAMA AGRINHO - PARANÁ 2026")
-    print("  'Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente'")
-    print("=" * 75)
-    print("Bem-vindo ao Simulador de Agro-Equilíbrio Avançado!")
-    print("Tome as melhores decisões para vencer o desafio da sustentabilidade.\n")
+        body {
+            background-color: #f4f9f4;
+            color: #333;
+            line-height: 1.6;
+        }
 
-def fazer_pergunta(pergunta, opcoes):
-    print("-" * 60)
-    print(pergunta)
-    for chave, valor in opcoes.items():
-        print(f"[{chave}] - {valor[0]}")
-    
-    while True:
-        escolha = input("\nEscolha sua ação (A, B ou C): ").upper()
-        if escolha in opcoes:
-            return opcoes[escolha][1], opcoes[escolha][2]
-        print("Opção inválida! Escolha A, B ou C.")
+        header {
+            background: linear-gradient(135deg, #1e4620, #2e7d32);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #81c784;
+        }
 
-def simular_fazenda():
-    exibir_cabecalho()
-    time.sleep(1)
-    
-    # Pontuações iniciais
-    producao = 50
-    sustentabilidade = 50
+        header h1 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+        }
 
-    # Cenário 1: Manejo da Água
-    p1 = "Cenário 1: Como será a irrigação da sua lavoura?"
-    opcoes_1 = {
-        'A': ('Irrigação por inundação (gasta mais água, estrutura barata).', +15, -20),
-        'B': ('Irrigação por gotejamento automatizado (alta eficiência e economia).', +10, +15),
-        'C': ('Depender apenas da chuva (sem custo, mas risco de perda).', -10, +5)
-    }
-    prod_mod, sust_mod = fazer_pergunta(p1, opcoes_1)
-    producao += prod_mod
-    sustentabilidade += sust_mod
+        header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #e8f5e9;
+        }
 
-    # Cenário 2: Controle de Pragas
-    p2 = "\nCenário 2: O ataque de lagartas começou. O que você faz?"
-    opcoes_2 = {
-        'A': ('Aplicar defensivos químicos pesados na área total imediatamente.', +20, -25),
-        'B': ('Utilizar Manejo Integrado de Pragas (MIP) e controle biológico.', +15, +20),
-        'C': ('Não aplicar nada e deixar a natureza agir por conta própria.', -25, +10)
-    }
-    prod_mod, sust_mod = fazer_pergunta(p2, opcoes_2)
-    producao += prod_mod
-    sustentabilidade += sust_mod
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-    # Cenário 3: Conservação do Solo
-    p3 = "\nCenário 3: Preparação do solo para a próxima safra. Qual a estratégia?"
-    opcoes_3 = {
-        'A': ('Arar a terra profundamente e queimar os restos da colheita anterior.', +5, -20),
-        'B': ('Plantio Direto na palhada, rotação de culturas e curvas de nível.', +20, +25),
-        'C': ('Deixar a terra em pousio sem nenhuma cobertura vegetal.', -15, -5)
-    }
-    prod_mod, sust_mod = fazer_pergunta(p3, opcoes_3)
-    producao += prod_mod
-    sustentabilidade += sust_mod
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
 
-    # Cenário 4: Matriz Energética (Novo!)
-    p4 = "\nCenário 4: A fazenda gasta muita energia elétrica nos galpões. Como resolver?"
-    opcoes_4 = {
-        'A': ('Continuar usando apenas a rede elétrica comum sem alterações.', 0, 0),
-        'B': ('Instalar painéis de energia solar (investimento alto, mas limpo).', +10, +20),
-        'C': ('Instalar um gerador a diesel antigo que estava parado.', +5, -15)
-    }
-    prod_mod, sust_mod = fazer_pergunta(p4, opcoes_4)
-    producao += prod_mod
-    sustentabilidade += sust_mod
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
 
-    # Cenário 5: Preservação de Nascentes (Novo!)
-    p5 = "\nCenário 5: Há uma nascente de rio na sua propriedade. Como tratá-la?"
-    opcoes_5 = {
-        'A': ('Isolar a área com cerca e plantar árvores nativas em volta (App).', +5, +25),
-        'B': ('Deixar o gado beber água direto lá para economizar encanamento.', +10, -25),
-        'C': ('Ignorar a área e focar apenas na plantação ao redor.', 0, -10)
-    }
-    prod_mod, sust_mod = fazer_pergunta(p5, opcoes_5)
-    producao += prod_mod
-    sustentabilidade += sust_mod
+        /* Estilos do Jogo */
+        .btn-opcao {
+            display: block;
+            width: 100%;
+            background-color: #f0f7f0;
+            border: 2px solid #a5d6a7;
+            color: #1e4620;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
 
-    # Resultados Finais
-    print("\n" + "=" * 75)
-    print("                      RESULTADO DO SEU MANEJO FINAL")
-    print("=" * 75)
-    print(f"Pontuação de Produção Agrícola: {producao} pontos")
-    print(f"Pontuação de Sustentabilidade:  {sustentabilidade} pontos")
-    print("-" * 75)
+        .btn-opcao:hover {
+            background-color: #e8f5e9;
+            border-color: #2e7d32;
+            transform: translateX(5px);
+        }
 
-    if producao >= 90 and sustentabilidade >= 90:
-        print("🏆 MESTRE DO AGRINHO! Você alcançou o equilíbrio perfeito!")
-        print("Sua fazenda é uma referência de Agro Forte e Futuro Sustentável no Paraná.")
-    elif producao >= 70 and sustentabilidade >= 70:
-        print("🌱 Muito bem! Conseguiu produzir com responsabilidade ambiental.")
-    elif producao >= 70 and sustentabilidade < 50:
-        print("⚠️ Alerta: Produtividade alta, mas o meio ambiente foi esgotado.")
-    elif producao < 50 and sustentabilidade >= 70:
-        print("🍃 Alerta: Natureza muito bem protegida, mas a fazenda produziu pouco.")
-    else:
-        print("❌ A fazenda não conseguiu prosperar e a natureza foi prejudicada.")
-    print("=" * 75)
+        .placar {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
 
-if __name__ == "__main__":
-    simular_fazenda()
+        .producao-cor { color: #e65100; }
+        .sustentavel-cor { color: #2e7d32; }
 
+        .resultado-final {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 6px;
+            border: 2px dashed #2e7d32;
+        }
+
+        footer {
+            background-color: #1e4620;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Programa Agrinho 2026</h1>
+        <p>"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>O Desafio do Equilíbrio</h2>
+            <p>Para o agro ser forte, ele precisa produzir de forma inteligente. Para o futuro ser sustentável, precisamos cuidar da terra e da água. Teste suas decisões no simulador abaixo!</p>
+        </div>
+
+        <div class="card" id="jogo-container">
+            <h3 id="pergunta-titulo">Carregando cenário...</h3>
+            <div id="opcoes-container"></div>
+            
+            <div class="placar">
+                <span class="producao-cor"> Produção: <span id="pontos-prod">50</span></span>
+                <span class="sustentavel-cor"> Sustentabilidade: <span id="pontos-sust">50</span></span>
+            </div>
+        </div>
+
+        <div class="card resultado-final" id="tela-resultado">
+            <h2 id="veredito-titulo">Fim da Simulação!</h2>
+            <p id="veredito-texto"></p>
+            <button onclick="reiniciarJogo()" style="margin-top: 15px; padding: 10px 20px; cursor: pointer; background: #2e7d32; color: white; border: none; border-radius: 4px;">Jogar Novamente</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Projeto Web para o GitHub • Tema Agrinho Paraná 2026</p>
+    </footer>
+
+    <script>
+        // Dados dos cenários do jogo
+        const cenarios = [
+            {
+                titulo: "Cenário 1: Como será a irrigação da sua lavoura?",
+                opcoes: [
+                    { texto: "A) Irrigação por inundação (gasta mais água, porém barata).", prod: 15, sust: -20 },
+                    { texto: "B) Irrigação por gotejamento (alta eficiência e economia).", prod: 10, sust: 15 },
+                    { texto: "C) Depender apenas da chuva (sem custo, mas alto risco).", prod: -10, sust: 5 }
+                ]
+            },
+            {
+                titulo: "Cenário 2: O ataque de lagartas começou. O que você faz?",
+                opcoes: [
+                    { texto: "A) Aplicar defensivos químicos pesados na área total.", prod: 20, sust: -25 },
+                    { texto: "B) Utilizar Manejo Integrado de Pragas (MIP) e controle biológico.", prod: 15, sust: 20 },
+                    { texto: "C) Não aplicar nada e deixar a natureza agir.", prod: -25, sust: 10 }
+                ]
+            },
+            {
+                titulo: "Cenário 3: Preparação do solo para a próxima safra. Qual a estratégia?",
+                opcoes: [
+                    { texto: "A) Arar a terra profundamente e queimar os restos da colheita.", prod: 5, sust: -20 },
+                    { texto: "B) Plantio Direto na palhada e rotação de culturas.", prod: 20, sust: 25 },
+                    { texto: "C) Deixar a terra em pousio sem nenhuma cobertura vegetal.", prod: -15, sust: -5 }
+                ]
+            }
+        ];
+
+        let cenarioAtual = 0;
+        let producao = 50;
+        let sustentabilidade = 50;
+
+        function carregarCenario() {
+            if (cenarioAtual < cenarios.length) {
+                const cenario = cenarios[cenarioAtual];
+                document.getElementById("pergunta-titulo").innerText = cenario.titulo;
+                
+                const containerOpcoes = document.getElementById("opcoes-container");
+                containerOpcoes.innerHTML = "";
+
+                cenario.opcoes.forEach(opcao => {
+                    const botao = document.createElement("button");
+                    botao.className = "btn-opcao";
+                    botao.innerText = opcao.texto;
+                    botao.onclick = () => processarEscolha(opcao.prod, opcao.sust);
+                    containerOpcoes.appendChild(botao);
+                });
+            } else {
+                mostrarResultadoFinal();
+            }
+        }
+
+        function processarEscolha(modProd, modSust) {
+            producao += modProd;
+            sustentabilidade += modSust;
+
+            document.getElementById("pontos-prod").innerText = producao;
+            document.getElementById("pontos-sust").innerText = sustentabilidade;
+
+            cenarioAtual++;
+            carregarCenario();
+        }
+
+        function mostrarResultadoFinal() {
+            document.getElementById("jogo-container").style.display = "none";
+            const telaRes = document.getElementById("tela-resultado");
+            telaRes.style.display = "block";
+
+            const vereditoTexto = document.getElementById("veredito-texto");
+
+            if (producao >= 70 && sustentabilidade >= 70) {
+                vereditoTexto.innerHTML = "<strong> PARABÉNS!</strong> Você alcançou o equilíbrio ideal! Sua fazenda é o exemplo perfeito de um Agro Forte e um Futuro Sustentável.";
+            } else if (producao >= 70 && sustentabilidade < 50) {
+                vereditoTexto.innerHTML = "<strong> ALERTA:</strong> Sua produção é excelente, mas o meio ambiente foi deixado de lado. A longo prazo, a fazenda sofrerá com a falta de recursos.";
+            } else if (producao < 50 && sustentabilidade >= 70) {
+                vereditoTexto.innerHTML = "<strong>ALERTA:</strong> A natureza ficou muito bem protegida, mas a fazenda não produziu o suficiente para se manter economicamente estável.";
+            } else {
+                vereditoTexto.innerHTML = "<strong> Crise:</strong> Faltou planejamento. A fazenda não produziu bem e os recursos naturais sofreram danos.";
+            }
+        }
+
+        function reiniciarJogo() {
+            cenarioAtual = 0;
+            producao = 50;
+            sustentabilidade = 50;
+            document.getElementById("pontos-prod").innerText = producao;
+            document.getElementById("pontos-sust").innerText = sustentabilidade;
+            document.getElementById("tela-resultado").style.display = "none";
+            document.getElementById("jogo-container").style.display = "block";
+            carregarCenario();
+        }
+
+        // Inicia o jogo ao carregar a página
+        carregarCenario();
+    </script>
 </body>
-</html>
+</html>  
