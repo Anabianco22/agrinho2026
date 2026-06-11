@@ -10,15 +10,15 @@
 import time
 
 def exibir_cabecalho():
-    print("=" * 70)
+    print("=" * 75)
     print("         PROGRAMA AGRINHO - PARANÁ 2026")
     print("  'Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente'")
-    print("=" * 70)
-    print("Bem-vindo ao Simulador de Agro-Equilíbrio!")
-    print("Sua missão é gerenciar uma fazenda mantendo a alta produção e protegendo a natureza.\n")
+    print("=" * 75)
+    print("Bem-vindo ao Simulador de Agro-Equilíbrio Avançado!")
+    print("Tome as melhores decisões para vencer o desafio da sustentabilidade.\n")
 
 def fazer_pergunta(pergunta, opcoes):
-    print("-" * 50)
+    print("-" * 60)
     print(pergunta)
     for chave, valor in opcoes.items():
         print(f"[{chave}] - {valor[0]}")
@@ -33,7 +33,7 @@ def simular_fazenda():
     exibir_cabecalho()
     time.sleep(1)
     
-    # Pontuações iniciais (Produção e Sustentabilidade)
+    # Pontuações iniciais
     producao = 50
     sustentabilidade = 50
 
@@ -70,32 +70,51 @@ def simular_fazenda():
     producao += prod_mod
     sustentabilidade += sust_mod
 
+    # Cenário 4: Matriz Energética (Novo!)
+    p4 = "\nCenário 4: A fazenda gasta muita energia elétrica nos galpões. Como resolver?"
+    opcoes_4 = {
+        'A': ('Continuar usando apenas a rede elétrica comum sem alterações.', 0, 0),
+        'B': ('Instalar painéis de energia solar (investimento alto, mas limpo).', +10, +20),
+        'C': ('Instalar um gerador a diesel antigo que estava parado.', +5, -15)
+    }
+    prod_mod, sust_mod = fazer_pergunta(p4, opcoes_4)
+    producao += prod_mod
+    sustentabilidade += sust_mod
+
+    # Cenário 5: Preservação de Nascentes (Novo!)
+    p5 = "\nCenário 5: Há uma nascente de rio na sua propriedade. Como tratá-la?"
+    opcoes_5 = {
+        'A': ('Isolar a área com cerca e plantar árvores nativas em volta (App).', +5, +25),
+        'B': ('Deixar o gado beber água direto lá para economizar encanamento.', +10, -25),
+        'C': ('Ignorar a área e focar apenas na plantação ao redor.', 0, -10)
+    }
+    prod_mod, sust_mod = fazer_pergunta(p5, opcoes_5)
+    producao += prod_mod
+    sustentabilidade += sust_mod
+
     # Resultados Finais
-    print("\n" + "=" * 70)
-    print("                      RESULTADO DO SEU MANEJO")
-    print("=" * 70)
+    print("\n" + "=" * 75)
+    print("                      RESULTADO DO SEU MANEJO FINAL")
+    print("=" * 75)
     print(f"Pontuação de Produção Agrícola: {producao} pontos")
     print(f"Pontuação de Sustentabilidade:  {sustentabilidade} pontos")
-    print("-" * 70)
+    print("-" * 75)
 
-    # Lógica de Avaliação baseada no tema do Agrinho
-    if producao >= 70 and sustentabilidade >= 70:
-        print("🏆 PARABÉNS! Você alcançou o AGRO FORTE E FUTURO SUSTENTÁVEL!")
-        print("Sua fazenda produz muito bem e o meio ambiente está perfeitamente protegido.")
+    if producao >= 90 and sustentabilidade >= 90:
+        print("🏆 MESTRE DO AGRINHO! Você alcançou o equilíbrio perfeito!")
+        print("Sua fazenda é uma referência de Agro Forte e Futuro Sustentável no Paraná.")
+    elif producao >= 70 and sustentabilidade >= 70:
+        print("🌱 Muito bem! Conseguiu produzir com responsabilidade ambiental.")
     elif producao >= 70 and sustentabilidade < 50:
-        print("⚠️ ALERTA: Agro Forte, mas Futuro Ameaçado!")
-        print("Sua produção é alta, mas a degradação ambiental vai destruir seu solo no futuro.")
+        print("⚠️ Alerta: Produtividade alta, mas o meio ambiente foi esgotado.")
     elif producao < 50 and sustentabilidade >= 70:
-        print("🍃 ALERTA: Natureza Intacta, mas Agro Fraco!")
-        print("O meio ambiente agradece, mas a produção foi baixa e a fazenda não se sustenta financeiramente.")
+        print("🍃 Alerta: Natureza muito bem protegida, mas a fazenda produziu pouco.")
     else:
-        print("❌ Crise Geral: Falta de planejamento.")
-        print("A fazenda não conseguiu produzir e a natureza também sofreu danos.")
-    print("=" * 70)
+        print("❌ A fazenda não conseguiu prosperar e a natureza foi prejudicada.")
+    print("=" * 75)
 
 if __name__ == "__main__":
     simular_fazenda()
-
 
 </body>
 </html>
